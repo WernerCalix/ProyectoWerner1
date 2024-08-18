@@ -61,6 +61,7 @@
                                     <th>No</th>
                                     <th>Titulo</th>
                                     <th>Cantidad Comentarios</th>
+                                    <th>Cantidad Replys</th> <!-- Nueva columna para Replys -->
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -79,12 +80,17 @@
                                         </td>
                                         <td>{{ $publicacione->cantidad_comentarios }}</td>
                                         <td>
+                                            <a href="{{ route('comentarios.index') }}">
+                                                <i class="fa fa-comments"></i> {{ $publicacione->cantidad_replys }}
+                                            </a> <!-- Redirigir a comentarios -->
+                                        </td>
+                                        <td>
                                             <form action="{{ route('publicaciones.destroy', $publicacione->id) }}" method="POST">
                                                 <a class="btn btn-sm btn-primary" href="{{ route('publicaciones.show', $publicacione->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                 <a class="btn btn-sm btn-success" href="{{ route('publicaciones.edit', $publicacione->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('¿Estas seguro que lo quiere eliminar?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta publicación?')"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -94,7 +100,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $publicaciones->withQueryString()->links() !!}
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@ class PublicacionFactory extends Factory
         return [
             'titulo'=>fake()->words(3, true),
             'descripcion'=>fake()->words(10, true),
-            'cantidad_comentarios' => fake()->numberBetween(),
+            'cantidad_comentarios' => fake()->numberBetween(0,20),
         ];
     }
 }

@@ -19,6 +19,7 @@
                                 <a href="{{ route('comentarios.create') }}" class="btn btn-primary btn-sm" data-placement="left">
                                     {{ __('Nuevo Comentario') }}
                                 </a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('publicaciones.index') }}"> {{ __('Volver') }}</a>
                             </div>
                         </div>
                     </div>
@@ -36,13 +37,12 @@
                                         <div class="panel panel-default">
                                             <div class="panel-heading d-flex justify-content-between align-items-center">
                                                 <h4>{{ $comentario->titulo }}</h4>
-                                                <a class="btn btn-link" href="#">Ver todos</a>
+
                                             </div>
                                             <div class="panel-body d-flex">
                                                 <img class="img-circle me-3" width="80" height="80" src="https://bootdey.com/img/Content/avatar/avatar6.png">
                                                 <div>
                                                     <p>{{ $comentario->contenido }}</p>
-                                                    <h5><a href="https://bootdey.com">Más fragmentos en Bootdey</a></h5>
                                                     <div class="mt-3">
                                                         <a class="btn btn-sm btn-primary" href="{{ route('comentarios.show', $comentario->id) }}">
                                                             <i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}
